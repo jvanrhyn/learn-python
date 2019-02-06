@@ -1,16 +1,12 @@
-from flask import Flask
-from flask import render_template
 from datetime import datetime
-import re
+from flask import Flask, render_template
+from . import app
 
-app = Flask(__name__)
 
-# Replace the existing home function with the one below
 @app.route("/")
 def home():
     return render_template("home.html")
 
-# New functions
 @app.route("/about")
 def about():
     return render_template("about.html")
@@ -20,7 +16,7 @@ def contact():
     return render_template("contact.html")
 
 @app.route("/hello/<name>")
-def hello_there(name = None):
+def hello_there(name):
     return render_template(
         "hello_there.html",
         name=name,
